@@ -18,7 +18,7 @@ bloxburg.github.io
     <script>
         function calculateGift() {
             const bloxburgCash = parseFloat(document.getElementById('bloxburg-cash').value);
-            let giftAmount = 0;
+            let robuxAmount = 0;
 
             // Define the conversion rates
             const conversionRates = {
@@ -38,14 +38,18 @@ bloxburg.github.io
                 if (bloxburgCash >= cash) {
                     const rate = conversionRates[cash];
                     const cashCount = Math.floor(bloxburgCash / cash);
-                    giftAmount += cashCount * rate;
+                    robuxAmount += cashCount * rate;
                     bloxburgCash -= cashCount * cash;
                 }
             }
 
+            // Divide the Robux amount by 2 (50%)
+            robuxAmount /= 2;
+
             // Display the result
-            document.getElementById('result').innerHTML = `The gifter will receive ${giftAmount} Robux.`;
+            document.getElementById('result').innerHTML = `The gifter will receive ${robuxAmount} Robux.`;
         }
     </script>
 </body>
 </html>
+
