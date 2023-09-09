@@ -1,28 +1,50 @@
-def calculate_gift_amount(bloxburg_cash):
-    # Define the conversion rates
-    conversion_rates = {
-        2000: 1,
-        10000: 5,
-        20000: 10,
-        50000: 25,
-        100000: 50,
-        200000: 100,
-        400000: 200,
-        500000: 250,
-        1000000: 500
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bloxburg Cash to Robux Calculator</title>
+</head>
+<body>
+    <h1>Bloxburg Cash to Robux Calculator</h1>
+    
+    <form id="calculator-form">
+        <label for="bloxburg-cash">Enter Bloxburg Cash amount:</label>
+        <input type="number" id="bloxburg-cash" name="bloxburg-cash" required>
+        <button type="button" onclick="calculateGift()">Calculate</button>
+    </form>
+    
+    <p id="result"></p>
 
-    # Calculate the gift amount based on the input Bloxburg Cash
-    gift_amount = 0
-    for cash, rate in conversion_rates.items():
-        if bloxburg_cash >= cash:
-            gift_amount += (bloxburg_cash // cash) * rate
-            bloxburg_cash %= cash
+    <script>
+        function calculateGift() {
+            const bloxburgCash = parseFloat(document.getElementById('bloxburg-cash').value);
+            let giftAmount = 0;
 
-    return gift_amount
+            // Define the conversion rates
+            const conversionRates = {
+                2000: 1,
+                10000: 5,
+                20000: 10,
+                50000: 25,
+                100000: 50,
+                200000: 100,
+                400000: 200,
+                500000: 250,
+                1000000: 500
+            };
 
-# Input the amount of Bloxburg Cash
-bloxburg_cash_input = int(input("Enter the amount of Bloxburg Cash: "))
-gift_amount = calculate_gift_amount(bloxburg_cash_input)
+            // Calculate the gift amount based on the input Bloxburg Cash
+            for (const cash in conversionRates) {
+                if (bloxburgCash >= cash) {
+                    const rate = conversionRates[cash];
+                    const cashCount = Math.floor(bloxburgCash / cash);
+                    giftAmount += cashCount * rate;
+                    bloxburgCash -= cashCount * cash;
+                }
+            }
 
-print(f"The gifter will receive {gift_amount} Robux.")
+            // Display the result
+            document.getElementById('result').innerHTML = `The gifter will receive ${giftAmount} Robux.`;
+        }
+    </script>
+</body>
+</html>
