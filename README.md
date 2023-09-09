@@ -1,4 +1,5 @@
 bloxburg.github.io
+
 def calculate_gift_amount(bloxburg_cash):
     # Define the conversion rates
     conversion_rates = {
