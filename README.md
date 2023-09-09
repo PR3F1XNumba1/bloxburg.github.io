@@ -36,11 +36,11 @@ bloxburg.github.io
 
             // Calculate the gift amount based on the input Bloxburg Cash
             for (const cash in conversionRates) {
-                if (bloxburgCash >= cash) {
+                if (bloxburgCash >= parseInt(cash)) {
                     const rate = conversionRates[cash];
-                    const cashCount = Math.floor(bloxburgCash / cash);
+                    const cashCount = Math.floor(bloxburgCash / parseInt(cash));
                     robuxAmount += cashCount * rate;
-                    bloxburgCash -= cashCount * cash;
+                    bloxburgCash -= cashCount * parseInt(cash);
                 }
             }
 
@@ -53,4 +53,3 @@ bloxburg.github.io
     </script>
 </body>
 </html>
-
