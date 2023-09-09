@@ -21,31 +21,8 @@ bloxburg.github.io
             const bloxburgCash = parseFloat(document.getElementById('bloxburg-cash').value);
             let robuxAmount = 0;
 
-            // Define the conversion rates
-            const conversionRates = {
-                2000: 1,
-                10000: 5,
-                20000: 10,
-                50000: 25,
-                100000: 50,
-                200000: 100,
-                400000: 200,
-                500000: 250,
-                1000000: 500
-            };
-
             // Calculate the gift amount based on the input Bloxburg Cash
-            for (const cash in conversionRates) {
-                if (bloxburgCash >= parseInt(cash)) {
-                    const rate = conversionRates[cash];
-                    const cashCount = Math.floor(bloxburgCash / parseInt(cash));
-                    robuxAmount += cashCount * rate;
-                    bloxburgCash -= cashCount * parseInt(cash);
-                }
-            }
-
-            // Divide the Robux amount by 2 (50%)
-            robuxAmount /= 2;
+            robuxAmount = (bloxburgCash / 2000) / 2;
 
             // Display the result
             document.getElementById('result').innerHTML = `The gifter will receive ${robuxAmount} Robux.`;
